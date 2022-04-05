@@ -19,7 +19,7 @@
                 var info=temp.split("!_!");
                 var table = document.getElementById("table");
                 for(var i=0;i<temp.length;i++) {
-                        temp2=info[i].split(",_,");
+                    temp2=info[i].split(",_,");
                     var row = table.insertRow(i+1);
                     for (var j = 0; j < temp2.length; j++) {
                         var cell1 = row.insertCell(j);
@@ -28,7 +28,7 @@
                 }
             }
         }
-        xhr.open("GET", "page2.php?q", true);
+        xhr.open("GET", "page3.php?q", true);
         xhr.send();
     }
     window.onload = sendRequest;
@@ -38,11 +38,9 @@
 <table class="greenTable" id="table">
 
     <tr>
-        <th>Connection state</th>
-        <th>Connection local address</th>
-        <th>Connection local port</th>
-        <th>Connection remote address</th>
-        <th>Connection remote port</th>
+        <th>UDP local Address</th>
+        <th>UDP local Port</th>
+
     </tr>
     <tr>
 
