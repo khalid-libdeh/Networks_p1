@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" id="page1">
+<head>
+    <meta charset="UTF-8">
+    <title>Part1</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+
+<div>
+    <h2 id="par">Change Contact</h2>
+    <form action="page1.php" method="post" target="_blank">
+        <label for="connection">Connection</label>
+        <input id="connection" name="connection" type="text" placeholder="Enter a new Contact">
+        <input type="submit" onclick="sendRequest()" href="page1.html">
+    </form>
+</div>
+
+<script>
+    function sendRequest() {
+        var xhr = new XMLHttpRequest();
+
+        var temp="";
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                temp=xhr.responseText;
+                var info=temp.split("!_!");
+                var table = document.getElementById("table");
+                document.getElementById("table").deleteRow(1);
+                var row = table.insertRow(1);
+                for(var i=0;i<info.length;i++) {
+                    var cell1 = row.insertCell(i);
+                    cell1.innerHTML = info[i];
+                }
+            }
+        }
+        xhr.open("GET", "page1.php?q", true);
+        xhr.send();
+    }
+    window.onload = sendRequest;
+
+</script>
+
+<table class="greenTable" id="table">
+
+    <tr>
+        <th>System description</th>
+        <th>Object ID</th>
+        <th>Up time</th>
+        <th>Contact</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Services</th>
+    </tr>
+    <tr>
+
+    </tr>
+
+
+</table>
+
+</body>
+</html>
